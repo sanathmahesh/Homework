@@ -21,7 +21,7 @@
       },
       {"calculate": "datum.Active + 0.0001", "as": "Active Cases"}
     ],
-    "mark": {"type": "geoshape"},
+    "mark": {"type": "geoshape", "stroke":"white"},
     "encoding": {
       "color": {
         "field": "2014",
