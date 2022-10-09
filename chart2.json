@@ -17,7 +17,7 @@
           "min": 1990,
           "max": 2014,
           "step": 1,
-          "name": "Report Year: "
+          "name": "Year: "
         }
       }
   ], 
