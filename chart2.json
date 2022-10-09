@@ -50,7 +50,7 @@
       "x": {
         "field": "value",
         "type": "quantitative",
-        "title": "Carbon Emissions in Kilotons",
+        "title": "Greenhouse Gas Emissions in Kilotons",
         "axis": {"labelFont": "Gill Sans", "titleFont": "Gill Sans"}
       },
       "y": {
