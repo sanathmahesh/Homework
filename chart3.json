@@ -1,0 +1,112 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "How does Australia compare with other major countries?",
+  "width": 800,
+  "height": 400,
+  "background": "#E8E8E8",
+  "data": {
+    "url": "https://raw.githubusercontent.com/sanathmahesh/Homework/main/greenhouse_gas_inventory_data_data.csv",
+    "format": {"type": "csv"}
+  },
+  "params": [
+    {
+      "name": "year_selection",
+      "value": 2014,
+      "bind": {
+        "input": "range",
+        "min": 1990,
+        "max": 2014,
+        "step": 1,
+        "name": "Year: "
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "year(datum.year) == year_selection"},
+    {
+      "lookup": "country_or_area",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/sanathmahesh/Homework/main/population_by_country_2020.csv"
+        },
+        "key": "Country",
+        "fields": ["Population"]
+      }
+    },
+    
+    {
+          "calculate": "datum.value/datum.Population * 10000",
+          "as": "Confirmed per 10,000 population"
+    },
+    
+    
+    
+    {"calculate": "join([datum.country_or_area], '')", "as": "y-axis labels"},
+     
+  ],
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "Confirmed per 10,000 population",
+      "type": "quantitative",
+      "title": "Greenhouse Gas Emissions in Kilotons",
+      "axis": {"labelFont": "Gill Sans", "titleFont": "Gill Sans"}
+    },
+    "y": {
+      "field": "y-axis labels",
+      "type": "nominal",
+      "title": "",
+      "sort": {"field": "Confirmed per 10,000 population", "order": "descending"},
+      "axis": {
+        "labelAlign": "left",
+        "labelPadding": 100,
+        "ticks": false,
+        "labelFont": "Gill Sans"
+      }
+    },
+    "color": {
+      "field": "category",
+      "type": "nominal",
+      "title": "Explained by",
+      "scale": {
+        "domain": [
+          "carbon_dioxide_co2_emissions_without_land_use_land_use_change_and_forestry_lulucf_in_kilotonne_co2_equivalent",
+          "greenhouse_gas_ghgs_emissions_including_indirect_co2_without_lulucf_in_kilotonne_co2_equivalent",
+          "greenhouse_gas_ghgs_emissions_without_land_use_land_use_change_and_forestry_lulucf_in_kilotonne_co2_equivalent",
+          "hydrofluorocarbons_hfcs_emissions_in_kilotonne_co2_equivalent",
+          "methane_ch4_emissions_without_land_use_land_use_change_and_forestry_lulucf_in_kilotonne_co2_equivalent",
+          "nitrogen_trifluoride_nf3_emissions_in_kilotonne_co2_equivalent",
+          "nitrous_oxide_n2o_emissions_without_land_use_land_use_change_and_forestry_lulucf_in_kilotonne_co2_equivalent",
+          "perfluorocarbons_pfcs_emissions_in_kilotonne_co2_equivalent",
+          "sulphur_hexafluoride_sf6_emissions_in_kilotonne_co2_equivalent"
+        ],
+        "range": [
+          "#1f77b4",
+          "#ff7f0e",
+          "#2ca02c",
+          "#d62728",
+          "#9467bd",
+          "#8c564b",
+          "#000000",
+          "#f781bf",
+          "#999999"
+        ]
+      },
+      "legend": null
+    },
+    "tooltip": [
+      {"field": "category", "type": "nominal", "title": "Type of Emission"},
+      {
+        "field": "value",
+        "type": "quantitative",
+        "title": "Emissions in Kilotons",
+        "format": ".2f"
+      }
+    ]
+  },
+  "config": {
+    "view": {"stroke": "transparent"},
+    "title": {"offset": 20, "anchor": "start", "font": "Gill Sans"},
+    "customFormatTypes": true
+  }
+}
