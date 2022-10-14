@@ -41,7 +41,7 @@
     
     
     
-    {"calculate": "join([datum.country_or_area], '')", "as": "y-axis labels"},
+    {"calculate": "join([datum.country_or_area], '')", "as": "y-axis labels"}
      
   ],
   "mark": "bar",
