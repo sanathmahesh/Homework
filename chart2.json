@@ -1,8 +1,8 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "title": "How does Australia compare with other major countries?",
-    "width": 800,
-    "height": 400,
+    "width": 600,
+    "height": 300,
     "background": "#E8E8E8",
     "data": {
       "url": "https://raw.githubusercontent.com/sanathmahesh/Homework/main/greenhouse_gas_inventory_data_data.csv",
