@@ -1,6 +1,10 @@
 var vega = "chart.json";
 var vega2 = "chart2.json";
 var vega3 = "chart3.json";
+var vega4 = "chart4.json";
+var vega5 = "chart5.json";
 vegaEmbed("#Chart", vega);
 vegaEmbed("#Chart2", vega2);
 vegaEmbed("#Chart3", vega3);
+vegaEmbed("#Chart4", vega4);
+vegaEmbed("#Chart5", vega5);
