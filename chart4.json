@@ -1,0 +1,35 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 600, "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/sanathmahesh/Homework/main/greenhouse_gas_inventory_data_data.csv",
+    "format": {"type": "csv"}
+  },
+  "transform": [
+    {
+      "filter":{
+        "field": "country_or_area",
+        "oneOf":["Australia"]
+      }
+    }
+  ],
+  "mark": "area",
+  "encoding": {
+    "x": {
+      "timeUnit": "yearmonth", "field": "year",
+      "axis": {"format": "%Y"}
+    },
+    "y": {
+      "aggregate": "sum", "field": "value"
+    },
+    "color": {
+      "field": "category",
+      "scale": {"scheme": "category20b"}
+    },
+    "tooltip":[
+      {
+        "field": "category"
+      }
+    ]
+  }
+}
