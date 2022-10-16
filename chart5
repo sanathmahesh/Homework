@@ -1,0 +1,51 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 600, "height": 600,
+  "description": "A bar chart with negative values. We can hide the axis domain line, and instead use a conditional grid color to draw a zero baseline.",
+  "data": {
+    "url": "https://raw.githubusercontent.com/sanathmahesh/Homework/main/AustraliaMeanTemperature.csv",
+    "format": {"type": "csv"}
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "year", "type": "nominal",
+      "title": "Year",
+      
+      "axis": {
+        
+        "ticks": false,
+        "labelAngle": 0,
+        "labelPadding": 4
+      }
+    },
+    "y": {
+      "field": "meanTemp", "type": "quantitative",
+      "title": "Mean Temperature Anomaly(C°)",
+      
+      "axis": {
+        "gridColor": {
+          "condition": {"test": "datum.value === 0", "value": "black"},
+          "value": "#ddd"
+        }
+        
+      }
+      
+    },
+    "color":{
+      "condition":{"test":"datum.meanTemp > 0", "value": "red"}
+    },
+    "tooltip":[
+      {
+        "field":"meanTemp", 
+        "type": "quantitative", 
+        "title": "Mean Temperature Anomaly(C°)"
+      },
+      {
+        "field":"year", 
+        "type": "quantitative", 
+        "title": "Year"
+      }
+    ]
+  }
+}
