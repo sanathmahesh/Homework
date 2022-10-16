@@ -80,6 +80,36 @@
         </div>
       </div>
       <!-- end pure grid group -->
+    
+    
+              <!-- pure grid group -->
+    <div class="pure-g">
+        <div class="pure-u-1-2">
+          <div class="description description-left">
+            <h2>How does Australia rank with other countries?</h2>
+            <p>Research Climate change data paragraph 2</p>
+          </div>
+        </div>
+        <div class="pure-u-1-2">
+          <div id="vis4" class="vis-container"></div>
+        </div>
+      </div>
+      <!-- end pure grid group -->
+    
+    
+              <!-- pure grid group -->
+    <div class="pure-g">
+        <div class="pure-u-1-2">
+          <div class="description description-left">
+            <h2>How does Australia rank with other countries?</h2>
+            <p>Research Climate change data paragraph 2</p>
+          </div>
+        </div>
+        <div class="pure-u-1-2">
+          <div id="vis5" class="vis-container"></div>
+        </div>
+      </div>
+      <!-- end pure grid group -->
 
 
 
@@ -91,6 +121,8 @@
     var specVis1 = "chart.json";
     var specVis2 = "chart2.json";
     var specVis3 = "chart3.json";
+    var specVis4 = "chart4.json";
+    var specVis5 = "chart5.json";
 
     vegaEmbed('#vis1', specVis1, { "actions": false });
 
@@ -103,6 +135,14 @@
     }).catch(console.error);
 
     vegaEmbed('#vis4', specVis3, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+    
+    vegaEmbed('#vis5', specVis3, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+    
+    vegaEmbed('#vis6', specVis3, { "actions": false }).then(function (result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
   </script>
