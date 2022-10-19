@@ -1,0 +1,48 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/sanathmahesh/Homework/main/IDCJAC0010_086104_2021_Data.csv",
+    "format": {"type": "csv"}
+  },
+  "mark": "rect",
+  "width": 600,
+  "height": 400,
+  "encoding": {
+    "x": {
+      "bin": {"maxbins":12},
+      "field": "Month",
+      "type": "quantitative"
+    },
+    "y": {
+
+      "field": "Day",
+      "type": "ordinal"
+    },
+    "color": {
+      "field": "MaximumTemperature",
+      "type": "quantitative"
+    },
+    "tooltip":[
+      {
+        "field":"MaximumTemperature", 
+        "type": "quantitative", 
+        "title": "Maximum Temperature(C°)"
+      },
+      {
+        "field":"Day", 
+        "type": "quantitative", 
+        "title": "Day"
+      },
+      {
+        "field":"Month", 
+        "type": "quantitative", 
+        "title": "Month"
+      }
+    ]
+  },
+  "config": {
+    "view": {
+      "stroke": "transparent"
+    }
+  }
+}
