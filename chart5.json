@@ -1,6 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 600, "height": 600,
+  "width": 750,
+  "height": 750,
   "description": "A bar chart with negative values. We can hide the axis domain line, and instead use a conditional grid color to draw a zero baseline.",
   "data": {
     "url": "https://raw.githubusercontent.com/sanathmahesh/Homework/main/AustraliaMeanTemperature.csv",
@@ -9,43 +10,37 @@
   "mark": "bar",
   "encoding": {
     "x": {
-      "field": "year", "type": "nominal",
+      "field": "year",
+      "type": "ordinal",
       "title": "Year",
-      
-      "axis": {
-        
-        "ticks": false,
-        "labelAngle": 0,
-        "labelPadding": 4
-      }
+      "bin": {"step": 10},
+      "axis": {"ticks": false, "labelAngle": 0, "labelPadding": 4}
     },
     "y": {
-      "field": "meanTemp", "type": "quantitative",
+      "aggregate": "sum",
+      "field": "meanTemp",
+      "type": "quantitative",
       "title": "Mean Temperature Anomaly(C°)",
-      
       "axis": {
         "gridColor": {
           "condition": {"test": "datum.value === 0", "value": "black"},
           "value": "#ddd"
         }
-        
       }
-      
     },
-    "color":{
-      "condition":{"test":"datum.meanTemp > 0", "value": "red"}
+    "color": {
+      "field": "meanTemp",
+      "scale": {"range": ["blue"]},
+      "condition": {"test": "datum.meanTemp > 0", "value": "red"},
+      "legend": null
     },
-    "tooltip":[
+    "tooltip": [
       {
-        "field":"meanTemp", 
-        "type": "quantitative", 
+        "field": "meanTemp",
+        "type": "quantitative",
         "title": "Mean Temperature Anomaly(C°)"
       },
-      {
-        "field":"year", 
-        "type": "quantitative", 
-        "title": "Year"
-      }
+      {"field": "year", "type": "quantitative", "title": "Year"}
     ]
   }
 }
