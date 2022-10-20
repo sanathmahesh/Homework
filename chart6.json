@@ -5,7 +5,7 @@
     "format": {"type": "csv"}
   },
   "mark": "rect",
-  "width": 600,
+  "width": 400,
   "height": 400,
   "encoding": {
     "x": {
