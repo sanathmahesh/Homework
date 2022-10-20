@@ -19,12 +19,12 @@
       "type": "ordinal"
     },
     "color": {
-      "field": "MaximumTemperature",
+      "field": "MaxTemp",
       "type": "quantitative"
     },
     "tooltip":[
       {
-        "field":"MaximumTemperature", 
+        "field":"MaxTemp", 
         "type": "quantitative", 
         "title": "Maximum Temperature(C°)"
       },
