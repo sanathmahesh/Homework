@@ -1,26 +1,31 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "data": {
-    "url": "https://raw.githubusercontent.com/sanathmahesh/Homework/main/IDCJAC0010_086104_2021_Data.csv",
+    "url": "https://raw.githubusercontent.com/sanathmahesh/Homework/main/2021-heatmap-month-editedd.csv",
     "format": {"type": "csv"}
   },
+  "title":"Maximum Temperature on each day(1984)",
   "mark": "rect",
-  "width": 400,
+  "width": 375,
   "height": 400,
   "encoding": {
     "x": {
-      "bin": {"maxbins":12},
+
       "field": "Month",
-      "type": "quantitative"
+      "type": "nominal",
+      "sort":null
     },
     "y": {
 
       "field": "Day",
-      "type": "ordinal"
+      "type": "nominal",
+      "sort":null
     },
     "color": {
       "field": "MaxTemp",
-      "type": "quantitative"
+      "type": "quantitative",
+      "scale": {"domain": [0, 41], "scheme": "reds"},
+      "legend":null
     },
     "tooltip":[
       {
@@ -35,7 +40,7 @@
       },
       {
         "field":"Month", 
-        "type": "quantitative", 
+        "type": "nominal", 
         "title": "Month"
       }
     ]
