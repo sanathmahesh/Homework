@@ -1,0 +1,53 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+      "url": "https://raw.githubusercontent.com/sanathmahesh/Homework/main/1980-heatmap-month-editedd.csv",
+      "format": {"type": "csv"}
+    },
+    "title":"Maximum Temperature on each day(2021)",
+    "mark": "rect",
+    "width": 375,
+    "height": 400,
+    "encoding": {
+      "x": {
+  
+        "field": "Month",
+        "type": "nominal",
+        "sort":null
+      },
+      "y": {
+  
+        "field": "Day",
+        "type": "nominal",
+        "sort":null
+      },
+      "color": {
+        "field": "MaxTemp",
+        "type": "quantitative",
+        "scale": {"domain": [0, 41], "scheme": "reds"},
+      "legend":null
+      },
+      "tooltip":[
+        {
+          "field":"MaxTemp", 
+          "type": "quantitative", 
+          "title": "Maximum Temperature(C°)"
+        },
+        {
+          "field":"Day", 
+          "type": "quantitative", 
+          "title": "Day"
+        },
+        {
+          "field":"Month", 
+          "type": "nominal", 
+          "title": "Month"
+        }
+      ]
+    },
+    "config": {
+      "view": {
+        "stroke": "transparent"
+      }
+    }
+  }
