@@ -1,6 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 350, "height": 350,
+  "width": 350, "height": 400,
+  "title": "Greenhouse Gas Emissions within Australia",
   "data": {
     "url": "https://raw.githubusercontent.com/sanathmahesh/Homework/main/greenhouse_gas_euro_edited.csv",
     "format": {"type": "csv"}
@@ -17,10 +18,11 @@
   "encoding": {
     "x": {
       "timeUnit": "yearmonth", "field": "year",
-      "axis": {"format": "%Y"}
+      "axis": {"format": "%Y"}, "title": "Year"
     },
     "y": {
-      "aggregate": "sum", "field": "value"
+      "aggregate": "sum", "field": "value",
+      "title": "Greenhouse Gas Emissions in Kilotons"
     },
     "color": {
       "field": "category",
@@ -54,7 +56,14 @@
     },
     "tooltip":[
       {
-        "field": "category"
+        "field": "category", "title": "Type of Emission"
+      },
+      {
+        "field": "value", "title": "Emission"
+      },
+      {
+        "timeUnit": "yearmonth", "field": "year",
+        "axis": {"format": "%Y"}, "title": "Year"
       }
     ]
   }
