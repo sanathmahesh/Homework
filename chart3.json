@@ -1,65 +1,28 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "How does Australia compare with other major countries?",
-  "width": 350,
-  "height": 350,
+  "width": 350, "height": 400,
+  "title": "Greenhouse Gas Emissions within Australia",
   "data": {
     "url": "https://raw.githubusercontent.com/sanathmahesh/Homework/main/greenhouse_gas_euro_edited.csv",
     "format": {"type": "csv"}
   },
-  "params": [
+  "transform": [
     {
-      "name": "year_selection",
-      "value": 2014,
-      "bind": {
-        "input": "range",
-        "min": 1990,
-        "max": 2014,
-        "step": 1,
-        "name": "Year: "
+      "filter":{
+        "field": "country_or_area",
+        "oneOf":["Australia"]
       }
     }
   ],
-  "transform": [
-    {"filter": "year(datum.year) == year_selection"},
-    {
-      "lookup": "country_or_area",
-      "from": {
-        "data": {
-          "url": "https://raw.githubusercontent.com/sanathmahesh/Homework/main/population_by_country_2020.csv"
-        },
-        "key": "Country",
-        "fields": ["Population"]
-      }
-    },
-    
-    {
-          "calculate": "datum.value/datum.Population * 10000",
-          "as": "Confirmed per 10,000 population"
-    },
-    
-    
-    
-    {"calculate": "join([datum.country_or_area], '')", "as": "y-axis labels"}
-     
-  ],
-  "mark": "bar",
+  "mark": "area",
   "encoding": {
     "x": {
-      "field": "Confirmed per 10,000 population",
-      "type": "quantitative",
-      "title": "Greenhouse Gas Emissions in Kilotons Per 10000 People"
+      "timeUnit": "yearmonth", "field": "year",
+      "axis": {"format": "%Y"}, "title": "Year"
     },
     "y": {
-      "field": "y-axis labels",
-      "type": "nominal",
-      "title": "",
-      "sort": {"field": "Confirmed per 10,000 population", "order": "descending"},
-      "axis": {
-        "labelAlign": "left",
-        "labelPadding": 100,
-        "ticks": false
-      }
+      "aggregate": "sum", "field": "value",
+      "title": "Greenhouse Gas Emissions in Kilotons"
     },
     "color": {
       "field": "category",
@@ -91,19 +54,17 @@
       },
       "legend": null
     },
-    "tooltip": [
-      {"field": "category", "type": "nominal", "title": "Type of Emission"},
+    "tooltip":[
       {
-        "field": "value",
-        "type": "quantitative",
-        "title": "Total Emissions in Kilotons",
-        "format": ".2f"
+        "field": "category", "title": "Type of Emission"
+      },
+      {
+        "field": "value", "title": "Emission"
+      },
+      {
+        "timeUnit": "yearmonth", "field": "year",
+        "axis": {"format": "%Y"}, "title": "Year"
       }
     ]
-  },
-  "config": {
-    "view": {"stroke": "transparent"},
-    "title": {"offset": 20, "anchor": "start"},
-    "customFormatTypes": true
   }
 }
