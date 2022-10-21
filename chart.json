@@ -53,7 +53,7 @@
           }
         }
       ],
-      "mark": {"type": "geoshape", "stroke": "white"},
+      "mark": {"type": "geoshape", "stroke": "black"},
       "encoding": {
         "color": {
           "field": "2014",
@@ -62,7 +62,8 @@
             "type": "threshold",
             "domain": [1, 10, 100],
             "range": ["#fdbe85", "#fd8d3c", "#e6550d", "#a63603"]
-          }
+          },
+          "legend": {"title": "CO2 Emissions Per Capita(%)"}
         },
         "tooltip": [
           {"field": "properties.NAME", "type": "nominal", "title": "Country"},
